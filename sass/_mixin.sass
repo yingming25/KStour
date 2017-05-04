@@ -1,0 +1,41 @@
+$max-width: 1024px
+$line-height: 1.5
+$text-color: red
+$link-color: blue
+
+
+@mixin bg($name,$bg)
+	background: url("../images/#{$name}.#{$bg}")
+	width: image-width("../images/#{$name}.#{$bg}")
+	height: image-height("../images/#{$name}.#{$bg}")
+@mixin text-indent
+	white-space: nowrap
+	text-indent: 100%
+	overflow: hidden
+
+@mixin clearfix
+	&:before,
+	&:after 
+		content: " " // 1
+		display: table // 2
+	&:after
+		clear: both
+@mixin breakpoint($point)
+	@if $point == pc
+		@media only screen and (max-width: 1024px)
+			@content
+	@if $point == pc860
+		@media only screen and (max-width: 860px)
+			@content
+	@else if $point == pad
+		@media only screen and (max-width: 768px)
+			@content
+	@else if $point == iphone5
+		@media only screen and (max-width: 569px)
+			@content
+	@else if $point == mobile480
+		@media only screen and (max-width: 480px)
+			@content
+	@else if $point == mobile
+		@media only screen and (max-width: 320px)
+			@content
